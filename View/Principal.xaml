@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VidaUtilCF.View.Principal"
+             Title="Principal">
+    <ScrollView>
+
+        <VerticalStackLayout Padding="10" Spacing="10" BackgroundColor="White">
+
+            <Image Source="vidautil.png"
+           WidthRequest="250" 
+           HeightRequest="120"
+           HorizontalOptions="Center"/>
+
+            <Label x:Name="fechaActualLabel"
+           Text="Fecha Actual: "
+           FontSize="Medium"
+           TextColor="black"
+           HorizontalOptions="Start"/>
+
+
+            <Label Text="Selecciona la fecha de elaboración:" TextColor="black"/>
+            <DatePicker x:Name="fechaElaboracionPicker" HorizontalOptions="CenterAndExpand" TextColor="black"/>
+
+            <HorizontalStackLayout VerticalOptions="Center" Spacing="8" Padding="5" HorizontalOptions="Center">
+
+                <Label Text="Día Juliano"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"
+           TextColor="Black"
+           WidthRequest="70"
+           FontSize="14" />
+
+                <CheckBox x:Name="usarDiaJulianoCheckBox"
+              Color="Black"
+              VerticalOptions="Center"
+              HorizontalOptions="Center" />
+
+                <Entry x:Name="codigoJulianoEntry"
+           Placeholder="(1-365)"
+           Keyboard="Numeric"
+           IsEnabled="{Binding Source={x:Reference usarDiaJulianoCheckBox}, Path=IsChecked}"
+           TextColor="Black"
+           WidthRequest="80"
+           FontSize="15"
+           VerticalOptions="Center"
+           HorizontalOptions="Center" />
+
+            </HorizontalStackLayout>
+
+
+
+            <Label Text="Selecciona la fecha de caducidad:" TextColor="black"/>
+            <DatePicker x:Name="fechaCaducidadPicker" HorizontalOptions="CenterAndExpand" TextColor="black"/>
+
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="¿Es un producto importado?"
+           VerticalOptions="Center"
+           TextColor="Black"
+           FontSize="16"/>
+
+                <CheckBox x:Name="productoImportadoCheckBox"
+              IsChecked="False"
+              Color="Red"
+              VerticalOptions="Center"
+              HorizontalOptions="Center"/>
+            </HorizontalStackLayout>
+
+
+
+            <Button Text="Calcular"
+        Clicked="CalcularVidaUtil"
+        WidthRequest="150"
+        BackgroundColor="DarkBlue"
+        TextColor="White"
+        FontSize="Body"
+        CornerRadius="10" />
+
+
+            <!-- Labels para mostrar los resultados -->
+            <Label x:Name="resultadoLabel" Text="Resultados" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="black"/>
+            <Label x:Name="clasificacionLabel" Text="Clasificación: " FontSize="Medium" FontAttributes="Bold" TextColor="black"/>
+            <Label x:Name="diasTotalesLabel" Text="Días Totales: " TextColor="black"/>
+            <Label x:Name="diasTranscurridosLabel" Text="Días Transcurridos: " TextColor="black"/>
+            <Label x:Name="diasRestantesLabel" Text="Días Restantes: " TextColor="black"/>
+            <Label x:Name="porcentajeVidaUtilLabel" Text="Porcentaje de vida útil: "  FontSize="Medium" FontAttributes="Bold" TextColor="black"/>
+            <Label x:Name="errorLabel" Text="" TextColor="Red" FontSize="Medium" />
+
+            <Button x:Name="reportarVidaUtilButton" Text="Reportar"
+        Clicked="ReportarVidaUtil"
+        WidthRequest="150"
+        BackgroundColor="DarkRed"
+        TextColor="White"
+        FontSize="Subtitle"
+        CornerRadius="10" 
+        IsEnabled="False"/>
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+
+</ContentPage>
+
